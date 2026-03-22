@@ -1,0 +1,8 @@
+{
+  "name": "dashboard-karangan-bunga-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/web",
+    "packages/*"
+  ]
+}
