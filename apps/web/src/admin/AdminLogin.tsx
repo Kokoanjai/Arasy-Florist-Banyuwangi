@@ -15,6 +15,7 @@ export default function AdminLogin() {
       const { token } = await api.login(password);
       setToken(token);
       window.location.hash = '#/admin';
+      window.location.reload();
     } catch {
       setError('Password salah');
     } finally {

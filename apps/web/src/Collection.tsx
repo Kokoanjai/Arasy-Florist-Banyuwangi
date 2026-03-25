@@ -59,7 +59,7 @@ export default function Collection() {
             <a className="text-emerald-900/60 dark:text-emerald-100/60 font-['Outfit'] font-bold tracking-tight hover:text-emerald-700 dark:hover:text-amber-300 transition-colors" href="#/ongkir">Ongkir</a>
             <a className="text-emerald-900/60 dark:text-emerald-100/60 font-['Outfit'] font-bold tracking-tight hover:text-emerald-700 dark:hover:text-amber-300 transition-colors" href="#/kontak">Kontak</a>
           </nav>
-          <a href="#/kontak" className="inline-block bg-primary-container text-on-primary px-6 py-2.5 rounded-lg font-['Outfit'] font-bold transition-transform scale-95 duration-200 hover:scale-100 shadow-sm text-center">
+          <a href="#/kontak" className="hidden sm:inline-block border-2 border-primary-container text-primary-container hover:bg-primary-container hover:text-white px-5 py-2 rounded-lg font-semibold transition-all active:scale-95 text-sm text-center">
             Pesan Sekarang
           </a>
         </div>
@@ -158,7 +158,7 @@ export default function Collection() {
         </a>
         <a className="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-800 text-emerald-900 dark:text-amber-200 rounded-2xl px-4 py-2 tap-highlight-transparent active:scale-90 transition-transform" href="#/koleksi">
           <span className="material-symbols-outlined mb-1" style={{ fontVariationSettings: "'FILL' 1" }}>local_florist</span>
-          <span className="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Galeri</span>
+          <span className="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Katalog</span>
         </a>
         <a className="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/50 px-4 py-2 tap-highlight-transparent active:scale-90 transition-transform hover:bg-emerald-50 dark:hover:bg-emerald-800/50" href="#/ongkir">
           <span className="material-symbols-outlined mb-1">local_shipping</span>

@@ -8,6 +8,7 @@ export default function AdminCategories() {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({ name: '', slug: '', description: '', imageUrl: '', sortOrder: 0 });
 
@@ -30,6 +31,25 @@ export default function AdminCategories() {
   const handleEdit = (c: Category) => {
     setForm({ name: c.name, slug: c.slug, description: c.description || '', imageUrl: c.imageUrl || '', sortOrder: c.sortOrder });
     setEditId(c.id); setShowForm(true);
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setError(null);
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+      const res = await fetch('https://api.imgbb.com/1/upload?key=41a0de5ac8275aca869b751eb8622516', { method: 'POST', body: formData });
+      const data = await res.json();
+      if (data.success) setForm({ ...form, imageUrl: data.data.url });
+      else throw new Error(data.error?.message || 'Gagal mengupload gambar');
+    } catch (err: any) {
+      setError(err.message || 'Error saat mengupload gambar');
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -86,8 +106,25 @@ export default function AdminCategories() {
               <input className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-xs font-medium text-gray-500 mb-1">URL Gambar</label>
-              <input className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" value={form.imageUrl} onChange={(e) => setForm({ ...form, imageUrl: e.target.value })} />
+              <label className="block text-xs font-medium text-gray-500 mb-1">Upload Gambar (Otomatis Tersimpan)</label>
+              <div className="flex items-center gap-4">
+                <input 
+                  type="file" 
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  disabled={uploading}
+                  className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-medium file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 outline-none" 
+                />
+                {uploading && <span className="text-sm text-emerald-600 font-medium animate-pulse">Mengupload...</span>}
+              </div>
+              {form.imageUrl && (
+                <div className="mt-3 relative inline-block">
+                  <img src={form.imageUrl} alt="Preview" className="h-24 w-24 object-cover rounded-xl border border-gray-200 shadow-sm" />
+                  <button type="button" onClick={() => setForm({ ...form, imageUrl: '' })} className="absolute -top-2 -right-2 bg-red-100 text-red-600 rounded-full p-1 shadow hover:bg-red-200">
+                    <span className="material-symbols-outlined text-[14px]">close</span>
+                  </button>
+                </div>
+              )}
             </div>
             <div className="md:col-span-2 flex gap-3">
               <button type="submit" className="bg-emerald-700 text-white px-6 py-2 rounded-xl font-medium text-sm hover:bg-emerald-800">{editId ? 'Simpan' : 'Tambah'}</button>

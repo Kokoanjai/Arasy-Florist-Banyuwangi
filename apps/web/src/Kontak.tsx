@@ -45,7 +45,7 @@ export default function Kontak() {
             <a className="text-emerald-900/60 font-medium hover:text-emerald-700 transition-colors" href="#/ongkir">Ongkir</a>
             <a className="text-emerald-700 border-b-2 border-amber-500 font-medium transition-colors" href="#/kontak">Kontak</a>
           </div>
-          <a href="#/kontak" className="inline-block bg-primary-container text-white px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 active:scale-95 transition-all text-center">
+          <a href="#/kontak" className="hidden sm:inline-block border-2 border-primary-container text-primary-container hover:bg-primary-container hover:text-white px-5 py-2 rounded-lg font-semibold transition-all active:scale-95 text-sm text-center">
             Pesan Sekarang
           </a>
         </div>
@@ -72,10 +72,15 @@ export default function Kontak() {
                 <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary shrink-0">
                   <span className="material-symbols-outlined">location_on</span>
                 </div>
-                <div>
-                  <h3 className="font-display font-bold text-lg mb-1">Alamat Workshop</h3>
-                  <p className="text-on-surface-variant leading-relaxed">{settings?.address || 'Memuat alamat...'}</p>
-                </div>
+                  <a 
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(settings?.address || 'Jl.candra Kirana asri blok C12 Banyuwangi, Jawa Timur 68418')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-colors cursor-pointer block"
+                  >
+                    <h3 className="font-display font-bold text-lg mb-1">Alamat Workshop</h3>
+                    <p className="text-on-surface-variant leading-relaxed underline decoration-dotted decoration-primary/30 underline-offset-4">{settings?.address || 'Jl.candra Kirana asri blok C12 Banyuwangi, Jawa Timur 68418'}</p>
+                  </a>
               </div>
               <div className="flex gap-5">
                 <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary shrink-0">
@@ -83,7 +88,7 @@ export default function Kontak() {
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-lg mb-1">Jam Operasional</h3>
-                  <p className="text-on-surface-variant">{settings?.operating_hours || 'Memuat jam operasional...'}</p>
+                  <p className="text-on-surface-variant">{settings?.operating_hours || '24 jam'}</p>
                 </div>
               </div>
             </div>
@@ -162,7 +167,7 @@ export default function Kontak() {
         </a>
         <a className="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/50 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-emerald-800/50 tap-highlight-transparent active:scale-90 transition-transform" href="#/koleksi">
           <span className="material-symbols-outlined">local_florist</span>
-          <span className="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Galeri</span>
+          <span className="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Katalog</span>
         </a>
         <a className="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/50 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-emerald-800/50 tap-highlight-transparent active:scale-90 transition-transform" href="#/ongkir">
           <span className="material-symbols-outlined">local_shipping</span>

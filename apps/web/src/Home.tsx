@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { api } from './lib/api';
 
 interface Category {
@@ -42,7 +42,7 @@ function Home() {
             <a className="text-emerald-900/60 hover:text-emerald-700 transition-colors" href="#/ongkir">Ongkir</a>
             <a className="text-emerald-900/60 hover:text-emerald-700 transition-colors" href="#/kontak">Kontak</a>
           </div>
-          <a href="#/kontak" className="inline-block bg-primary-container text-white px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 active:scale-95 transition-all text-center">
+          <a href="#/kontak" className="hidden sm:inline-block border-2 border-primary-container text-primary-container hover:bg-primary-container hover:text-white px-5 py-2 rounded-lg font-semibold transition-all active:scale-95 text-sm text-center">
             Pesan Sekarang
           </a>
         </div>
@@ -133,13 +133,13 @@ function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
                 <div className="text-white">
                   <p className="font-bold text-lg">Workshop Kami</p>
-                  <p className="text-sm opacity-80">Jl. Brawijaya No. 12, Banyuwangi</p>
+                  <p className="text-sm opacity-80">Jl.candra Kirana asri blok C12 Banyuwangi, Jawa Timur 68418</p>
                 </div>
               </div>
             </div>
 
-            <div className="space-y-8">
-              <h2 className="text-4xl font-['Outfit'] font-extrabold text-on-surface">Kunjungi Galeri Kami</h2>
+            <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl font-['Outfit'] font-extrabold text-on-surface">Kunjungi katalog kami melalui</h2>
 
               <a href="#/kontak" className="inline-block bg-primary text-white px-8 py-4 rounded-xl font-bold hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20 flex items-center gap-3 w-fit mt-12 group text-center">
                 Order Sekarang
@@ -150,10 +150,15 @@ function Home() {
                   <div className="w-12 h-12 rounded-2xl bg-primary-container/10 flex items-center justify-center flex-shrink-0">
                     <span className="material-symbols-outlined text-primary">location_on</span>
                   </div>
-                  <div>
+                  <a 
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(settings?.address || 'Jl.candra Kirana asri blok C12 Banyuwangi, Jawa Timur 68418')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-colors cursor-pointer block"
+                  >
                     <h4 className="font-bold text-lg font-['Outfit']">Alamat</h4>
-                    <p className="text-on-surface-variant">{settings?.address || 'Memuat...'}</p>
-                  </div>
+                    <p className="text-on-surface-variant underline decoration-dotted decoration-primary/30 underline-offset-4">{settings?.address || 'Jl.candra Kirana asri blok C12 Banyuwangi, Jawa Timur 68418'}</p>
+                  </a>
                 </div>
 
                 <div className="flex gap-4 items-start">
@@ -162,7 +167,7 @@ function Home() {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg font-['Outfit']">Jam Operasional</h4>
-                    <p className="text-on-surface-variant">{settings?.operating_hours || 'Memuat...'}</p>
+                    <p className="text-on-surface-variant">{settings?.operating_hours || '24 jam'}</p>
                   </div>
                 </div>
 
@@ -172,7 +177,7 @@ function Home() {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg font-['Outfit']">Hubungi Kami</h4>
-                    <p className="text-on-surface-variant">{settings?.phone || 'Memuat...'} (WhatsApp Available)</p>
+                    <p className="text-on-surface-variant">{settings?.phone || '+62 85228727778'} (WhatsApp Available)</p>
                   </div>
                 </div>
               </div>
@@ -189,7 +194,7 @@ function Home() {
         </a>
         <a className="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/50 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-emerald-800/50 tap-highlight-transparent active:scale-90 transition-transform" href="#/koleksi">
           <span className="material-symbols-outlined">local_florist</span>
-          <span className="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Galeri</span>
+          <span className="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Katalog</span>
         </a>
         <a className="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/50 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-emerald-800/50 tap-highlight-transparent active:scale-90 transition-transform" href="#/ongkir">
           <span className="material-symbols-outlined">local_shipping</span>

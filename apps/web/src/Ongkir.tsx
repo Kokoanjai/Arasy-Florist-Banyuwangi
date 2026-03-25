@@ -43,7 +43,7 @@ export default function Ongkir() {
             <a className="text-emerald-700 border-b-2 border-amber-500 font-medium transition-colors" href="#/ongkir">Ongkir</a>
             <a className="text-emerald-900/60 font-medium hover:text-emerald-700 transition-colors" href="#/kontak">Kontak</a>
           </div>
-          <a href="#/kontak" className="inline-block bg-primary-container text-white px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 active:scale-95 transition-all text-center">
+          <a href="#/kontak" className="hidden sm:inline-block border-2 border-primary-container text-primary-container hover:bg-primary-container hover:text-white px-5 py-2 rounded-lg font-semibold transition-all active:scale-95 text-sm text-center">
             Pesan Sekarang
           </a>
         </div>
@@ -161,7 +161,7 @@ export default function Ongkir() {
         </a>
         <a className="flex flex-col items-center justify-center text-emerald-800/50 dark:text-emerald-200/50 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-emerald-800/50 tap-highlight-transparent active:scale-90 transition-transform" href="#/koleksi">
           <span className="material-symbols-outlined">local_florist</span>
-          <span className="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Galeri</span>
+          <span className="font-['Inter'] text-[10px] font-medium uppercase tracking-widest mt-1">Katalog</span>
         </a>
         <a className="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-800 text-emerald-900 dark:text-amber-200 rounded-2xl px-4 py-2 tap-highlight-transparent active:scale-90 transition-transform" href="#/ongkir">
           <span className="material-symbols-outlined">local_shipping</span>
